@@ -29,11 +29,12 @@ var phone1 = document.querySelector('#phone1');
 var pw = document.querySelector('#password1');
 var pid = document.querySelector('#pid');
 phone.onblur = function() {
-    if (phone.value.length < 11) {
-        phone1.style.display = 'block'
-    } else {
+    if(checkMobile(phone.value)){
         phone1.style.display = 'none'
+    }else{
+        phone1.style.display = 'block'
     }
+
 }
 
 mm1.onblur = function() {
@@ -74,9 +75,38 @@ function time(e) {
     }
 }
 document.getElementById("pid").onclick = function() {
+    var that=this;
     //1：判断手机号是否正确
+    var phone=$("#phone").val();
+    checkMobile(phone)
     //2：图片验证码位数是否正确
+    var img_code=$("#img_code").val();
+    if(img_code.length!=6){
+        //图片验证码格式不正确
+        alert("图片验证码格式不正确");
+        return;
+    }
     //3:发送异步ajax 请求
-    //4：如果请求返回正确则 进行倒计时
-    time(this);
+    $.ajax({
+        type: "POST",
+        url: project_path+"/v1/login/send/code/register",
+        data: "phone="+phone+"&verify_code="+img_code+"&code_key="+code_key,
+        success: function(msg){
+            if(msg.success){
+                time(that);
+            }else{
+                //4：如果请求返回正确则 进行倒计时
+                alert(msg.msg)
+            }
+        }
+    });
+}
+//验证码手机号码格式
+function checkMobile(phone){
+    if(!(/^1[3|4|5|8|7][0-9]\d{4,8}$/.test(phone))){
+        phone1.style.display = 'block'
+        return false;
+    }else{
+        return true
+    }
 }
