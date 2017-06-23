@@ -7,7 +7,7 @@ function sendCode(){
         data: sendData+"&code_key="+code_key,
         success: function(msg){
             if(msg.success){
-                alert("���ͳɹ�")
+                alert("发送成功")
             }else{
                 alert(msg.msg)
             }
@@ -52,18 +52,18 @@ mm2.onblur = function() {
     }
 }
 
-var wait = 10;
+var wait = 120;
 
 function time(e) {
     if (wait == 0) {
         e.removeAttribute("disabled");
-        e.value = "��ȡ��֤��";
+        e.value = "获取验证码";
         pid.style.background = 'red';
         pid.style.cursor = 'pointer';
-        wait = 10;
+        wait = 120;
     } else {
         e.setAttribute("disabled", true);
-        e.value = "���·���(" + wait + ")";
+        e.value = "重新发送(" + wait + ")";
         pid.style.background = 'gray';
         pid.style.cursor = 'not-allowed';
         wait--;
@@ -74,5 +74,9 @@ function time(e) {
     }
 }
 document.getElementById("pid").onclick = function() {
+    //1：判断手机号是否正确
+    //2：图片验证码位数是否正确
+    //3:发送异步ajax 请求
+    //4：如果请求返回正确则 进行倒计时
     time(this);
 }
