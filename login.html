@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<link rel="stylesheet " type="text/css " href="css/globle.css " />
+		<link rel="stylesheet " type="text/css " href="css/login.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<script src='js/jquery-2.1.4.js'></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/autoview.js" type="text/javascript" media="screen" charset="utf-8"></script>
+		<title>登录</title>
+
+	</head>
+
+	<body>
+
+		<header>
+
+			<div class="head-all">
+				<div class="head-logo">
+					<a href="login.html">
+						<img src="img/logo.png" />
+					</a>
+				</div>
+					
+				
+
+				<ul class="head-right">
+					<li class="head-act"><a href="login.html">登录</a></li>
+					<li><a href="register.html">注册</a></li>
+				</ul>
+				
+				<div class="shouye">
+					<span><a href="index.html">返回首页</a></span>
+				</div>
+			</div>
+		</header>
+
+		<!--denglu-->
+		<div class="login">
+			<div class="login-all">
+				<div class="login-left">
+					<a href="">
+						<img src="img/head.jpg" />
+					</a>
+				</div>
+
+				<div class="login-right">
+
+					<div class="login-right1">
+						<h2 class="dlzh">登录账号</h2>
+						<form action="">
+							
+							<div class="login-form">
+								<img class="login-form01" src="img/open.png"/>
+								<img class="login-form02" src="img/close.png"/>
+							</div>
+							
+							
+							<div class="input01" style="margin-top: -10px;">
+								<input type="text" class="form-control input-text" placeholder="请输入账号" />
+								<span><img src="img/gr.png"/></span>
+							</div>
+
+							<div class="input01">
+								<input type="password" class="form-control input-pass" placeholder="请输入密码"/>
+								<span><img src="img/mm.png"/></span>
+							</div>
+
+							<!--记住密码-->
+							<div class="remember">
+
+								<div class="remember-left">
+									<span><a href="forget_pwd.html">忘记密码？</a></span>
+								</div>
+							</div>
+
+							<div class="dl">
+								<a href="">登 &nbsp;录</a>
+							</div>
+
+							<div class="forget">
+								<span>
+									还没有账号？点我
+									<a href="register.html">立即注册</a>
+								</span>
+							</div>
+
+						</form>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+		
+		<footer>
+			<div class="foot">
+				<span>©2015 北京沃安科技. 经营许可证编号： 京ICP证 150589号 京ICP备10048059号-3</span>
+			</div>
+		</footer>
+
+	</body>
+
+</html>
+
+<script type="text/javascript">
+   $(function  () {
+   	 $('header .head-right li').click(function  () {
+   	 	$(this).addClass('head-act').siblings().removeClass('head-act')
+   	 })
+   	
+   	  $('.login .login-right .input01 .input-text').focus(function (e) { 
+   	  	e.stopPropagation();
+   	 	$('.login .login-right .login-form .login-form01').show()
+   	 	$('.login .login-right .login-form .login-form02').hide()
+   	 })
+// 	 
+   	  $('.login .login-right .input01 .input-pass').focus(function  (e) {
+   	 	e.stopPropagation();
+   	 	$('.login .login-right .login-form .login-form01').hide()
+   	 	$('.login .login-right .login-form .login-form02').show()
+   	 })
+   	               
+   })
+</script>

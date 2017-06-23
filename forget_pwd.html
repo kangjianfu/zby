@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<link rel="stylesheet " type="text/css " href="css/globle.css " />
+		<link rel="stylesheet" type="text/css" href="css/forget_pwd.css"/>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<script src='js/jquery-2.1.4.js' charset="UTF-8"></script>
+		<script src="js/bootstrap.min.js" charset="UTF-8"></script>
+		<title>忘记密码</title>
+
+	</head>
+
+	<body>
+
+		<header>
+
+			<div class="head-all">
+				<div class="head-logo">
+					<a href="login.html">
+						<img src="img/logo.png" />
+					</a>
+				</div>
+
+				<ul class="head-right">
+					<li class="head-act"><a href="login.html">登录 </a></li>
+					<li><a href="register.html">注册</a></li>
+				</ul>
+
+				<div class="shouye">
+					<span><a href="login.html">返回首页</a></span>
+				</div>
+			</div>
+		</header>
+
+		<!--denglu-->
+		<div class="login">
+			<div class="login-all">
+				<div class="login-left">
+					<a href="">
+						<img src="img/head.jpg" />
+
+					</a>
+				</div>
+
+				<div class="login-right">
+					<div class="login-right1">
+						<h2 class="zczh">修改密码</h2>
+						<form action="">
+							<div class="input01" style="margin-top: 20px;">
+								<span class="input01-fir">手机号：</span>
+								<div class="input01-sec">
+									<input type="text" class="form-control" placeholder="请输入注册手机号" id="phone" maxlength="11" />
+									<span class="input01-sec01"><img src="img/phone.png"/></span>
+									<p id="phone1">请输入正确的手机号</p>
+								</div>
+							</div>
+							<div class="input01 ">
+								<div class="input02">
+									<span class="input01-fir">验证码：</span>
+
+									<div class="input01-sec">
+										<input style="width: 120px;" type="text" maxlength="5" class="form-control"  name="verify_code" placeholder="图片验证码" id="img_code" placeholder="图片验证码" />
+										<span class="input01-sec01"><img src="img/tp.png"/></span>
+									</div>
+								</div>
+								<span class="input01-thr">
+									<a href=""><img id="code_key" /></a>
+								</span>
+
+							</div>
+							<div class="input01 ">
+								<div class="input02">
+									<span class="input01-fir">验证码：</span>
+
+									<div class="input01-sec">
+										<input style="width: 120px;" type="text" maxlength="6" class="form-control" placeholder="手机验证码" />
+										<span class="input01-sec01"><img src="img/phone.png"/></span>
+									</div>
+								</div>
+
+								<input type="button" name="" id="pid" value="获取验证码" class="input02-thr" />
+								
+
+							</div>
+
+							<div class="input01">
+								<span class="input01-fir">新密码：</span>
+								<div class="input01-sec">
+									<input type="password" class="form-control" placeholder="请输入新密码" maxlength="20" id="mm1" />
+									<span class="input01-sec01"><img src="img/mm.png"/></span>
+									<p id="password1">密码要设置复杂点哦</p>
+								</div>
+							</div>
+
+							<div class="input01">
+								<span class="input01-fir">确认密码：</span>
+								<div class="input01-sec">
+									<input type="password" class="form-control" placeholder="请确认新密码" maxlength="20" id="mm2" />
+									<span class="input01-sec01"><img src="img/mm.png"/></span>
+									<p id="mm21">请输入相同的密码</p>
+								</div>
+							</div>
+
+							
+
+							
+
+							<!--注册-->
+
+							<div class="dl">
+								<a href="index.html">提 &nbsp;交</a>
+							</div>
+
+							
+
+						</form>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<footer>
+			<div class="foot">
+				<span>©2015 北京沃安科技. 经营许可证编号： 京ICP证 150589号 京ICP备10048059号-3</span>
+			</div>
+		</footer>
+
+	</body>
+
+</html>
+
+<script type="text/javascript">
+	var mm1 = document.querySelector('#mm1')
+	var mm2 = document.querySelector('#mm2')
+	var mm21 = document.querySelector('#mm21')
+	var phone = document.querySelector('#phone')
+	var phone1 = document.querySelector('#phone1')
+	var pw = document.querySelector('#password1')
+	var pid = document.querySelector('#pid')
+	phone.onblur = function() {
+		if (phone.value.length < 11) {
+			phone1.style.display = 'block'
+		} else {
+			phone1.style.display = 'none'
+		}
+	}
+
+	mm1.onblur = function() {
+		if (mm1.value.length < 6) {
+			pw.style.display = 'block'
+		} else {
+			pw.style.display = 'none'
+		}
+	}
+
+	mm2.onblur = function() {
+		if (mm1.value !== mm2.value) {
+			mm21.style.display = 'block'
+		} else {
+			mm21.style.display = 'none'
+		}
+	}
+
+	var wait = 10;
+
+	function time(e) {
+		if (wait == 0) {
+			e.removeAttribute("disabled");
+			e.value = "获取验证码";
+			pid.style.background = 'red';
+			pid.style.cursor = 'pointer';
+			wait = 10;
+		} else {
+			e.setAttribute("disabled", true);
+			e.value = "重新发送(" + wait + ")";
+			pid.style.background = 'gray';
+			pid.style.cursor = 'not-allowed';
+			wait--;
+			setTimeout(function() {
+					time(e)
+				},
+				1000)
+		}
+	}
+	document.getElementById("pid").onclick = function() {
+		time(this);
+	}
+</script>
