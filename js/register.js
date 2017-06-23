@@ -1,25 +1,9 @@
 var code_key;
-function sendCode(){
-    var sendData=$("#register_form").serialize();
-    $.ajax({
-        type: "POST",
-        url: project_path+"/v1/login/send/code/register",
-        data: sendData+"&code_key="+code_key,
-        success: function(msg){
-            if(msg.success){
-                alert("发送成功")
-            }else{
-                alert(msg.msg)
-            }
-        }
-    });
-}
+//加载图片验证码
 $(function(){
     var time= new Date();
     code_key=time.getTime();
     $("#code_key").attr("src",project_path+"/front/verifycode/code?code_key="+code_key);
-
-
 });
 var mm1 = document.querySelector('#mm1');
 var mm2 = document.querySelector('#mm2');

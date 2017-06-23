@@ -1,1 +1,1 @@
-var project_path="http://localhost:8080/cloud";
+var project_path="http://101.201.197.202:8080/cloud";
